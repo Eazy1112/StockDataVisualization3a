@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Data Visualizer</title>
+</head>
+<body>
+    <h1>Stock Data Visualizer</h1>
+    <form method="POST">
+        <label>Symbol:</label>
+        <select name="symbol">
+            <option value="AAPL">AAPL</option>
+            <option value="GOOGL">GOOGL</option>
+            <option value="MSFT">MSFT</option>
+            <option value="TSLA">TSLA</option>
+        </select><br>
+
+        <label>Chart Type:</label>
+        <select name="chart_type">
+            <option value="1">Bar</option>
+            <option value="2">Line</option>
+        </select><br>
+
+        <label>Time Series:</label>
+        <select name="function">
+            <option value="TIME_SERIES_INTRADAY">Intraday</option>
+            <option value="TIME_SERIES_DAILY">Daily</option>
+            <option value="TIME_SERIES_WEEKLY">Weekly</option>
+            <option value="TIME_SERIES_MONTHLY">Monthly</option>
+        </select><br>
+
+        <label>Start Date:</label>
+        <input type="date" name="start_date"><br>
+        <label>End Date:</label>
+        <input type="date" name="end_date"><br>
+
+        <input type="submit" value="Generate Chart">
+    </form>
+
+    {% if message %}
+    <p style="color: red;">{{ message }}</p>
+    {% endif %}
+
+    {% if chart_svg %}
+    <div>{{ chart_svg | safe }}</div>
+    {% endif %}
+</body>
+</html>
